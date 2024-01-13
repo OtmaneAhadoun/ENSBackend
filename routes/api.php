@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfesseurController;
 use App\Http\Controllers\MatiereController;
-use App\Http\Controllers\CoursController;
+
 use App\Http\Controllers\FiliereController;
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +29,5 @@ Route::post('/logout', [userController::class, "loGout"])->name('loGout');
 
 Route::resource('professeur', ProfesseurController::class);
 Route::resource('module', MatiereController::class);
-Route::resource('cours', CoursController::class);
+// Route::resource('cours', CoursController::class);
 Route::resource('filiere', FiliereController::class);
