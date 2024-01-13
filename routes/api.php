@@ -4,6 +4,11 @@ use App\Http\Controllers\userController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\ProfesseurController;
+use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\CoursController;
+use App\Http\Controllers\FiliereController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,3 +25,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/login', [userController::class, "login"])->name('login');
 Route::post('/logout', [userController::class, "loGout"])->name('loGout');
+
+
+Route::resource('professeur', ProfesseurController::class);
+Route::resource('module', MatiereController::class);
+Route::resource('cours', CoursController::class);
+Route::resource('filiere', FiliereController::class);
