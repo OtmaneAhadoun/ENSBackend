@@ -37,8 +37,9 @@ class InscriptionController extends Controller
 
 
     public function getCount(){
-        $counts=Inscription::join('filiere','filiere.id','=','inscription.idFiliere')
-        ->select('filiere.id as idFiliere','filiere.nom as nomFiliere',\DB::raw('COUNT(inscription.id) as count'))
+        $counts=Inscription::
+        select('filiere.id as idFiliere','filiere.nom as nomFiliere',\DB::raw('COUNT(inscription.id) as count'))
+        ->rightJoin('filiere','filiere.id','=','inscription.idFiliere')
         ->groupBy('filiere.id',"filiere.nom")
         ->get();
 
@@ -49,7 +50,7 @@ class InscriptionController extends Controller
 
 
     public function getetudiantbyfiliere(Request $request){
-        $inscriptions=Inscription::where('idFiliere',$request->idfiliere)->where('status',true)->get();
+        $inscriptions=Inscription::where('idFiliere',$request->idfiliere)->where('status',1)->get();
         return response()->json($inscriptions);
     }
 
