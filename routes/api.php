@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfesseurController;
 use App\Http\Controllers\MatiereController;
-
 use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\CoursController;
+use App\Http\Controllers\InscriptionController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,5 +31,13 @@ Route::post('/logout', [userController::class, "loGout"])->name('loGout');
 
 Route::resource('professeur', ProfesseurController::class);
 Route::resource('module', MatiereController::class);
-// Route::resource('cours', CoursController::class);
+Route::resource('cours', CoursController::class);
 Route::resource('filiere', FiliereController::class);
+Route::resource('inscription', InscriptionController::class);
+
+Route::get('/preselect', [InscriptionController::class, "preSelect"])->name('preSelect');
+Route::get('/getcount', [InscriptionController::class, "getCount"])->name('getCount');
+Route::get('/getetudiantbyfiliere', [InscriptionController::class, "getetudiantbyfiliere"])->name('getetudiantbyfiliere');
+Route::get('/getstatistic', [InscriptionController::class, "getstatistic"])->name('getstatistic');
+
+Route::get('/getModule/{id}', [MatiereController::class, "getMatiere"])->name('getMatiere');
