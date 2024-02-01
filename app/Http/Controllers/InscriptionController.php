@@ -71,6 +71,12 @@ class InscriptionController extends Controller
     {
         //
     }
+    public function all()
+    {
+        
+        $modules=Inscription::select("Inscription.*","filiere.nom as nomFiliere")->join('filiere','filiere.id','=','Inscription.idFiliere')->get();
+        return response()->json($modules);
+    }
 
     /**
      * Store a newly created resource in storage.

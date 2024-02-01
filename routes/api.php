@@ -35,6 +35,7 @@ Route::resource('cours', CoursController::class);
 Route::resource('filiere', FiliereController::class);
 Route::resource('inscription', InscriptionController::class);
 
+Route::get('/candidats', [InscriptionController::class, "all"]);
 Route::get('/preselect', [InscriptionController::class, "preSelect"])->name('preSelect');
 Route::get('/getcount', [InscriptionController::class, "getCount"])->name('getCount');
 Route::get('/getetudiantbyfiliere', [InscriptionController::class, "getetudiantbyfiliere"])->name('getetudiantbyfiliere');
